@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard with Chatbot Integration using OpenWeather API</title>
+    <link rel="stylesheet" href="table.css">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "google-generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+</head>
+<body>
+    <div class="background_img">
+        <img src="images/1.jpg" alt="background" id="background">
+    </div> 
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">Weather App</div>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="table.html">Tables</a>
+            </nav>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <div class="weather-input">
+                    <input type="text" name="city" id="city_input" placeholder="Enter city name">
+                    <button type="button" id="searchBtn">Get  Weather</button>
+                </div>
+            </div>
+
+            <div class="user-profile">
+                <img src="images/p.png" alt="User Profile" id="profileImg">
+            </div>   
+            
+            <div class="weather-data">
+                <div class="weather-widget">
+                    <div class="current-weather">
+                        <div class="weather-icon">
+                            <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="Weather Icon" id="weather-icon">
+                        </div>
+                        <div class="details">
+                            <h2 id="city-name">City Name: __</h2>
+                            <p id="temperature">Temperature: __&deg;C</p>
+                            <p id="humidity">Humidity: __%</p>
+                            <p id="wind-speed">Wind Speed: __ m/s</p>
+                            <p id="description">Weather Desricption: __</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart">
+                        <h3>Temperature Forecast (5 Days)</h3>
+                        <canvas id="tempChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h3>Weather Conditions (5 Days)</h3>
+                        <canvas id="conditionsChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h3>Temperature Changes (5 Days)</h3>
+                        <canvas id="tempChangeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="forecast-chat-container">
+                
+                <div class="forecast-table">
+                    <h3>5-Day Forecast</h3>
+                    <table id="forecastTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Temperature</th>
+                                <th>Weather Condition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Forecast data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button id="prevPage">Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPage">Next</button>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button id="sortAscBtn">Sort Temp (Ascending)</button>
+                    <button id="sortDescBtn">Sort Temp (Descending)</button>
+                    <button id="filterRainBtn">Show Rainy Days</button>
+                    <button id="highestTempBtn">Show Highest Temp Day</button>
+                </div>
+
+                <div class="chatbot-widget">
+                    <h3>Weather Chatbot</h3>
+                    <div id="chatbox">
+                        <!-- Chat messages will be inserted here -->
+                    </div>
+                    <input type="text" id="userInput" placeholder="Ask about the weather...">
+                    <button id="sendBtn">Send</button>
+                </div>
+            </div>
+            
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="filter.js"></script>
+</body>
+</html>
